@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List
 
-class UserSignUp:
+class UserSignUp(BaseModel):
     Fullname:str
     Matric_no:int
     Department:str
