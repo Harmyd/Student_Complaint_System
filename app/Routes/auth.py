@@ -6,7 +6,7 @@ from ..Services import signup,login
 Auth= APIRouter(prefix="/auth")
 
 @Auth.post("/signup",status_code=status.HTTP_201_CREATED)
-def signup(request:UserSignUp,db:Session=Depends(get_db())):
+def signup(request:UserSignUp,db:Session=Depends(get_db)):
     return signup.signup(request,db)
 
 @Auth.post("/login",status_code=status.HTTP_200_OK)
