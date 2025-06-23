@@ -1,7 +1,7 @@
 from typing import Optional
 from datetime import timedelta,datetime
 from jose import jwt
-from Config import SECRET_KEY,Algorithm
+from .Config import SECRET_KEY,Algorithm
 
 def create_access_token(data:dict,expiry:Optional[timedelta]=None):
     to_encode=data.copy()
