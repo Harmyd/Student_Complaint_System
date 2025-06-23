@@ -3,7 +3,7 @@ from typing import List
 
 class UserSignUp(BaseModel):
     Fullname:str
-    Matric_no:int
+    Matric_no:str
     Department:str
     Level:str
     Email:str
