@@ -2,8 +2,8 @@ from ..databases import Session
 from ..models import Students
 from fastapi.responses import JSONResponse
 from fastapi import status,HTTPException
-from ..Util import validator
-from ..Util import Token
+from ..Util import validator,Token,hash
+
 
 def signup(request,db:Session):
     Email_valid=validator.valid_email(request.Email.strip().lower())
@@ -12,12 +12,13 @@ def signup(request,db:Session):
 #return the error if email is not valid
     if isinstance(Email_valid,JSONResponse):
         return Email_valid
+    email=Email_valid
     
-
     password_strength=validator.valid_password(request.password)
     #return the error if password is not valid 
     if isinstance(password_strength,JSONResponse):
         return password_strength
+    password=hash.Hash.hash_password(password_strength)
     
     #check if email and matric no already exist
     Email_check=db.query(Students).filter(Students.Email==Email_valid).first()
@@ -35,7 +36,7 @@ def signup(request,db:Session):
     else:
         try:
             new_students=Students(Full_name=request.Fullname,Matric_no=Matric_number,
-                                Department=request.Department,Level=request.Level,Email=Email_valid,Password=password_strength)
+                                Department=request.Department,Level=request.Level,Email=email,Password=password)
             db.add(new_students)
             db.commit()
             db.refresh(new_students)

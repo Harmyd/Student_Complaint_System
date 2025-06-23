@@ -9,4 +9,7 @@ class UserSignUp(BaseModel):
     Email:str
     Password:str
 
+class Login(BaseModel):
+    Email:str
+    Password:str
 
