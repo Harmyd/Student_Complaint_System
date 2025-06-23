@@ -24,7 +24,7 @@ def login(request,db:Session):
             content={"message":"Wrong Password"}
         )
     else:
-        token=Token.create_access_token(data={"user_id":Email_check.id,"Matric_no":Email_check.Matric_No})
+        token=Token.create_access_token(data={"students_id":Email_check.id,"matric_no":Email_check.Matric_No})
         return JSONResponse(
             status_code=status.HTTP_200_OK,
             content={
