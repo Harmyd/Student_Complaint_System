@@ -7,7 +7,7 @@ class Students(Base):
     __tablename__="students"
     id=Column(Integer,primary_key=True,index=True)
     Full_name=Column(String)
-    Matric_No=Column(Integer,unique=True,index=True)
+    Matric_No=Column(String,unique=True,index=True)
     Department=Column(String)
     Level=Column(String,index=True)
     Email=Column(String,unique=True,index=True)
