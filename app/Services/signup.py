@@ -5,7 +5,7 @@ from fastapi import status,HTTPException
 from ..Util import validator,Token,hash
 
 
-def signup(request,db:Session):
+def SignUp(request,db:Session):
     Email_valid=validator.valid_email(request.Email.strip().lower())
     Matric_number=request.Matric_no.strip().lower()
 
