@@ -7,7 +7,7 @@ from .hash import Hash
 check_valid=PasswordValidator()
 check_valid \
     .min(6)\
-    .min(100)\
+    .max(100)\
     .has().uppercase()\
     .has().lowercase()\
     .has().symbols()\
