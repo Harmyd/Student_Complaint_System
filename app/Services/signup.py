@@ -14,7 +14,7 @@ def SignUp(request,db:Session):
         return Email_valid
     email=Email_valid
     
-    password_strength=validator.valid_password(request.password)
+    password_strength=validator.valid_password(request.Password)
     #return the error if password is not valid 
     if isinstance(password_strength,JSONResponse):
         return password_strength
