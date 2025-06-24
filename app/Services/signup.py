@@ -43,7 +43,7 @@ def signup(request,db:Session):
             return JSONResponse(
                 status_code=status.HTTP_200_OK,
                 content={
-                        "message":"Student signed up Successfully",
+                        "message":"Sign up Successfull",
                         "access_token":Token.create_access_token(data={"students_id":new_students.id,"matric_no":new_students.Matric_No}),
                         "Token_type":"Bearer"
                         }       
