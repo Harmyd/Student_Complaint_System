@@ -3,6 +3,7 @@ from fastapi import status
 from ..Util import validator,hash,Token
 from fastapi.responses import JSONResponse 
 from ..models import Students
+from ..Util.hash import Hash
 
 def login(request,db:Session):
 
@@ -18,8 +19,8 @@ def login(request,db:Session):
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message":"Email does not exist"}
         )
-    hasher=hash.Hash()
-    unhashed_Password=hasher.verify_password(request.Password,Email_check.Password)
+    
+    unhashed_Password=Hash.verify_password(request.Password,Email_check.Password)
     if not unhashed_Password:
         return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
