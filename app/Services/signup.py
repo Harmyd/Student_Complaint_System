@@ -25,12 +25,13 @@ def SignUp(request,db:Session):
     Matric_no_check=db.query(Students).filter(Students.Matric_No==Matric_number).first()
     if Email_check :
         return JSONResponse(
-            #status_code=status.HTTP_400_BAD_REQUEST,
-            content={"message":"Email Exists"}
+           
+            content={"message":"Email Exists"},
+            status_code=status.HTTP_400_BAD_REQUEST
         )
     elif Matric_no_check:
         return JSONResponse(
-            #status_code= status.HTTP_400_BAD_REQUEST,
+            status_code= status.HTTP_400_BAD_REQUEST,
             content={"message":"Matric_no Exists"}
         )
     else:
