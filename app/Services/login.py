@@ -12,13 +12,14 @@ def login(request,db:Session):
     email=Email_valid
     
     Email_check=db.query(Students).filter(Students.Email==email).first()
-    unhashed_Password=hash.Hash.verify_password(request.Password,Email_check.Password)
+    
     if not Email_check:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message":"Email does not exist"}
         )
-    elif not unhashed_Password:
+    unhashed_Password=hash.Hash.verify_password(request.Password,Email_check.Password)
+    if not unhashed_Password:
         return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
             content={"message":"Wrong Password"}
