@@ -18,7 +18,8 @@ def login(request,db:Session):
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message":"Email does not exist"}
         )
-    unhashed_Password=hash.Hash.verify_password(request.Password,Email_check.Password)
+    hasher=hash.Hash()
+    unhashed_Password=hasher.verify_password(request.Password,Email_check.Password)
     if not unhashed_Password:
         return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
