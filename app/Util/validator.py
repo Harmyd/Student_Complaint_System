@@ -16,7 +16,7 @@ check_valid \
 def valid_password(password):
     if not check_valid.validate(password):
         return JSONResponse(
-            status_code=status.HTTP_400_BAD_REQUEST,
+            #status_code=status.HTTP_400_BAD_REQUEST,
             content={"message":"Password must be at least 8 characters long, with uppercase, lowercase, digits, and no spaces."}
         )
     return Hash.hash_password(password)
@@ -29,7 +29,7 @@ def valid_email(email):
         return Email.email
     except EmailNotValidError as e:
         return JSONResponse(
-            status_code=status.HTTP_400_BAD_REQUEST,
+            #status_code=status.HTTP_400_BAD_REQUEST,
             content={"message":e}
         )
 
