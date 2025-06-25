@@ -35,7 +35,7 @@ def SignUp(request,db:Session):
         )
     else:
         try:
-            new_students=Students(Full_name=request.Fullname,Matric_no=Matric_number,
+            new_students=Students(Full_name=request.Fullname,Matric_No=Matric_number,
                                 Department=request.Department,Level=request.Level,Email=email,Password=password)
             db.add(new_students)
             db.commit()
