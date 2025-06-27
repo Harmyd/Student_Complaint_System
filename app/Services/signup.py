@@ -42,7 +42,7 @@ def SignUp(request,db:Session):
             db.commit()
             db.refresh(new_students)
             return JSONResponse(
-                status_code=status.HTTP_200_OK,
+                #status_code=status.HTTP_200_OK,
                 content={
                         "message":"Sign up Successfull",
                         "access_token":Token.create_access_token(data={"students_id":new_students.id,"matric_no":new_students.Matric_No}),
