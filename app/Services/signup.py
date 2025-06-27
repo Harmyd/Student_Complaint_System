@@ -18,7 +18,8 @@ def SignUp(request,db:Session):
     #return the error if password is not valid 
     if isinstance(password_strength,JSONResponse):
         return password_strength
-    password=hash.Hash.hash_password(password_strength)
+    
+    password=password_strength
     
     #check if email and matric no already exist
     Email_check=db.query(Students).filter(Students.Email==Email_valid).first()

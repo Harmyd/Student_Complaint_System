@@ -19,7 +19,8 @@ def valid_password(password):
             status_code=status.HTTP_400_BAD_REQUEST,
             content={"message":"Min 8 chars, A-Z, a-z, 0-9, no spaces."}
         )
-    return Hash.hash_password(password)
+    hasher=Hash()
+    return hasher.hash_password(password)
 
 
 
