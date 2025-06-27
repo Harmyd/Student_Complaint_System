@@ -21,8 +21,8 @@ def login(request,db:Session):
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message":"Email does not exist"}
         )
-    
-    unhashed_Password=Hash.verify_password(request.Password,Email_check.Password)
+    Hasher=Hash()
+    unhashed_Password=Hasher.verify_password(request.Password,Email_check.Password)
     print(unhashed_Password)
     if  unhashed_Password == False:
         return JSONResponse(
