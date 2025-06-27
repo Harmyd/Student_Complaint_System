@@ -30,7 +30,7 @@ def valid_email(email):
     except EmailNotValidError as e:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
-            content={"message":e}
+            content={"message":str(e)}
         )
 
     
