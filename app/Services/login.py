@@ -13,6 +13,8 @@ def login(request,db:Session):
     email=Email_valid
     
     Email_check=db.query(Students).filter(Students.Email==email).first()
+    print(Email_check.Password)
+    print(request.Password)
     
     if not Email_check:
         return JSONResponse(
@@ -21,6 +23,7 @@ def login(request,db:Session):
         )
     
     unhashed_Password=Hash.verify_password(request.Password,Email_check.Password)
+    print(unhashed_Password)
     if  unhashed_Password == False:
         return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
