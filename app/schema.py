@@ -13,3 +13,14 @@ class Login(BaseModel):
     Email:str
     Password:str
 
+class ForgotPasswordRequest(BaseModel):
+    Email:str
+
+class VerifyCodeRequest(BaseModel):
+    Email:str
+    code:str
+
+class ResetPassword(Login):
+    pass
+
+    
