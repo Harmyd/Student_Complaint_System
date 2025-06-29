@@ -2,6 +2,7 @@ from ..databases import Session
 from ..models import Students,Password_reset
 from ..Util.validator import valid_email
 from fastapi.responses import JSONResponse
+
 from fastapi import status
 from datetime import timedelta,datetime
 from ..Util.code_generator import generate_code
@@ -21,12 +22,16 @@ def send_reset_code(request,db:Session):
     
     Otp_code = generate_code(4)
     expiry=datetime.utcnow()+timedelta(minutes=1)
-    
-    reset_code=Password_reset(email=check_email.Email,code=Otp_code,expires_at=expiry)
-    db.add(reset_code)
+    #check if email exists
+    existing = db.query(Password_reset).filter(Password_reset.email==request.Email).first()
+    if existing:
+        existing.code=Otp_code
+        existing.expires_at=expiry
+    else:
+        reset_code=Password_reset(email=check_email.Email,code=Otp_code,expires_at=expiry)
+        db.add(reset_code)
+        
     db.commit()
-    db.refresh(reset_code)
-
     try:
         send_email(Otp_code,check_email.Email)
     except Exception as e:
