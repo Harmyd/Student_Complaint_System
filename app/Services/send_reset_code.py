@@ -22,7 +22,7 @@ def send_reset_code(request,db:Session):
     Otp_code = generate_code(4)
     expiry=datetime.utcnow()+timedelta(minutes=1)
     
-    reset_code=Password_reset(Email=check_email.Email,Code=Otp_code,Expires_at=expiry)
+    reset_code=Password_reset(email=check_email.Email,code=Otp_code,expires_at=expiry)
     db.add(reset_code)
     db.commit()
     db.refresh(reset_code)

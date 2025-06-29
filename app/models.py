@@ -30,6 +30,6 @@ class Complains(Base):
 class Password_reset(Base):
     __tablename__ = "reset_code"
     id=Column(Integer,primary_key=True,index=True)
-    Email=Column(String,unique=True,index=True)
-    Code=Column(String,nullable=False)
-    Expires_at=Column(DateTime,nullable=False)
+    email=Column(String,unique=True,index=True)
+    code=Column(String,nullable=False)
+    expires_at=Column(DateTime,nullable=False)

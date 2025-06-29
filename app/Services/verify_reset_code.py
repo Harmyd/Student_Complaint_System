@@ -5,13 +5,13 @@ from fastapi import status
 from fastapi.responses import JSONResponse
 
 def verify_code(request,db:Session):
-    code=db.query(Password_reset).filter(Password_reset.Email==request.Email).first()
+    code=db.query(Password_reset).filter(Password_reset.email==request.Email).first()
     if not code:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message":"reset code not found"}
         )
-    Time_expired=code.Expires_at
+    Time_expired=code.expires_at
     current_time=datetime.utcnow()
     if current_time>Time_expired:
         return JSONResponse(
