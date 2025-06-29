@@ -5,20 +5,20 @@ from fastapi import status
 from fastapi.responses import JSONResponse
 
 def verify_code(request,db:Session):
-    code=db.query(Password_reset).filter(Password_reset.email==request.Email).first()
-    if not code:
+    otp=db.query(Password_reset).filter(Password_reset.email==request.Email).first()
+    if not otp:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message":"reset code not found"}
         )
-    Time_expired=code.expires_at
+    Time_expired=otp.expires_at
     current_time=datetime.utcnow()
     if current_time>Time_expired:
         return JSONResponse(
             status_code=status.HTTP_410_GONE,
             content={"message":"code already expired"}
         )
-    elif request.code != code.Code:
+    elif request.code != otp.code:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
             content={"message":"code not match"}
