@@ -11,7 +11,7 @@ def send_email(code,receiver_email):
     msg["From"]=my_email
     msg["To"]=receiver_email
     msg["Subject"]="Password_Reset"
-    msg.set_content(f"Here is your reset code {code}")
+    msg.set_content(f"Here is your reset code {code},This code will expire in 1 minute")
 
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com",465) as smtp:
