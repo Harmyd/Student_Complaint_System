@@ -15,6 +15,7 @@ def send_email(code,receiver_email):
 
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com",465) as smtp:
+            smtp.set_debuglevel(1)
             smtp.login(my_email,my_app_password)
             smtp.send_message(msg)
     except Exception as e:
