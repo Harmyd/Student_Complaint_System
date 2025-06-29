@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 def send_email(code,receiver_email):
     my_email="abdulharmyd3@gmail.com"
-    my_app_password="gwoy xkjq itic ooqm"
+    my_app_password="gwoyxkjqitiooqm"
 
     msg= EmailMessage()
     msg["From"]=my_email
