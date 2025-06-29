@@ -35,13 +35,12 @@ def send_reset_code(request,db:Session):
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
 
-            content={"message":f"failed to send email: {str(e)}",
-                     "Time":expiry.isoformat()}
+            content={"message":f"failed to send email: {str(e)}"}
         )
     return JSONResponse(
         status_code=status.HTTP_200_OK,
         content={"message":"Reset code is sent successfully",
-                 "expiry_time":expiry}
+                 "expiry_time":expiry.isoformat()}
     )
 
 
