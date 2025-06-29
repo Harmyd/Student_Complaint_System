@@ -3,6 +3,7 @@ from ..models import Password_reset
 from datetime import timedelta,datetime
 from fastapi import status
 from fastapi.responses import JSONResponse
+from ..Util import Token
 
 def verify_code(request,db:Session):
     otp=db.query(Password_reset).filter(Password_reset.email==request.Email).first()
@@ -26,5 +27,7 @@ def verify_code(request,db:Session):
     else:
         return JSONResponse(
             status_code=status.HTTP_200_OK,
-            content={"message":"Code verified"}
+            content={"message":"Code verified",
+                     "access_token":Token.create_access_token(data={"Email":otp.email},expiry=timedelta(minutes=30))
+                     }
         )

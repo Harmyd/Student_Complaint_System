@@ -34,7 +34,7 @@ def login(request,db:Session):
             status_code=status.HTTP_200_OK,
             content={
                     "message":"Login successful",
-                    "Token":token,
+                    "access_token":token,
                     "Token_type":"Bearer"
                      }
         )
