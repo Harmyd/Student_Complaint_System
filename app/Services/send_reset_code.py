@@ -34,6 +34,7 @@ def send_reset_code(request,db:Session):
     db.commit()
     try:
         send_email(Otp_code,check_email.Email)
+        print(f"Sending email to {check_email.Email} with code {Otp_code}")
     except Exception as e:
         db.delete(reset_code)
         db.commit()
