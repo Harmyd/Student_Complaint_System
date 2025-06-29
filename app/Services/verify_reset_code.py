@@ -18,7 +18,7 @@ def verify_code(request,db:Session):
             status_code=status.HTTP_410_GONE,
             content={"message":"code already expired"}
         )
-    elif request.code != otp.code:
+    elif request.Code != otp.code:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
             content={"message":"code not match"}

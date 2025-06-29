@@ -18,7 +18,7 @@ class ForgotPasswordRequest(BaseModel):
 
 class VerifyCodeRequest(BaseModel):
     Email:str
-    code:str
+    Code:str
 
 class ResetPassword(Login):
     pass
