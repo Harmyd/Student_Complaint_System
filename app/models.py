@@ -18,12 +18,15 @@ class Students(Base):
 class Complains(Base):
     __tablename__="complaints"
     id = Column(Integer,primary_key=True,index=True)
-    Title = Column(String)
-    Student_id=Column(ForeignKey("students.id"))
-    Description=Column(String,nullable=False)
+    name= Column(String)
+    title = Column(String)
+    student_id=Column(ForeignKey("students.id"))
+    level=Column(String)
+    description=Column(String,nullable=False)
+    department=Column(String)
     file_path=Column(String,nullable=True)
-    Status= Column(String,default="Pending")
-    Created_at=Column(DateTime,default=datetime.utcnow)
+    status= Column(String,default="Pending")
+    created_at=Column(DateTime,default=datetime.utcnow)
 
     student=Relationship("Students",back_populates="complains")
 

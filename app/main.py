@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from .databases import Base,engine
 import os
-from .Routes import auth,forgot_password
+from .Routes import auth,forgot_password,Complaint
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -23,6 +23,7 @@ def index():
 
 app.include_router(auth.Auth)
 app.include_router(forgot_password.forgot_password)
+app.include_router(Complaint.complaint)
 
 if __name__=="__main__":
     import uvicorn

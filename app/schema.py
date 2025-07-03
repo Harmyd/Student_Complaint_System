@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List,Optional
 
 class UserSignUp(BaseModel):
     Fullname:str
@@ -22,5 +22,9 @@ class VerifyCodeRequest(BaseModel):
 
 class ResetPassword(Login):
     pass
+
+class Complaint(BaseModel):
+   
+    File_path=Optional[str]
 
     
