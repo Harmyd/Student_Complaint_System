@@ -6,7 +6,7 @@ import os
 from fastapi.responses import JSONResponse
 import cloudinary.uploader
 
-def submit_complaint(Name,Matric_no,Department,Level,Complaint_title,Description,File_path:UploadFile,db:Session):
+def submit_Complaints(Name,Matric_no,Department,Level,Complaint_title,Description,File_path:UploadFile,db:Session):
     student=db.query(Students).filter(Students.Matric_No==Matric_no).first()
     if not student:
         return JSONResponse(

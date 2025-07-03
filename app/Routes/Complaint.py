@@ -16,4 +16,4 @@ def submit_complaints(
     File_path:List[UploadFile]=File(...),
     db:Session=Depends(get_db)
 ):
-    return submit_complaint(Name,Matric_no,Department,Level,Complaint_Title,Description,File_path,db)
+    return submit_complaint.submit_Complaints (Name,Matric_no,Department,Level,Complaint_Title,Description,File_path,db)
