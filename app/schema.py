@@ -23,8 +23,6 @@ class VerifyCodeRequest(BaseModel):
 class ResetPassword(Login):
     pass
 
-class Complaint(BaseModel):
-   
-    File_path=Optional[str]
+
 
     
