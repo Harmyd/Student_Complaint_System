@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from .Config import SECRET_KEY,Algorithm
 from jose import jwt,JWTError
 
-oauth2scheme=OAuth2PasswordBearer()
+oauth2scheme=OAuth2PasswordBearer("/login")
 def get_token(Token:str=Depends(oauth2scheme)):
     try:
         decoded_token=jwt.decode(Token,SECRET_KEY,algorithms=Algorithm)

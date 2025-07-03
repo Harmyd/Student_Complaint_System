@@ -16,12 +16,13 @@ def submit_Complaints(Name,Matric_no,Department,Level,Complaint_title,Descriptio
     try:
         url=None
         if File_path:
-            result=cloudinary.uploader.upload(
-                File_path.file,
-                folder="Complaints_img",
-                resource_type="auto"
-            )
-            url = result["secure_url"]
+            for File in File_path:
+                result=cloudinary.uploader.upload(
+                    File.file,
+                    folder="Complaints_img",
+                    resource_type="auto"
+                )
+                url = result["secure_url"]
         
         complaint= Complains(name=Name,title=Complaint_title,student_id=student.id,level=Level,description=Description,department=Department,file_path=url)
         db.add(complaint)
