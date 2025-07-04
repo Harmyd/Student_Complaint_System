@@ -6,8 +6,9 @@ import os
 from fastapi.responses import JSONResponse
 import cloudinary.uploader
 
-def submit_Complaints(Name,Matric_no,Department,Level,Complaint_title,Description,File_path:UploadFile,db:Session):
-    student=db.query(Students).filter(Students.Matric_No==Matric_no).first()
+def submit_Complaints(Name,Matric_no,Department,Level,Complaint_title,Description,File_path:UploadFile,db:Session,current_user):
+    student_id=current_user["user_id"]
+    student=db.query(Students).filter(Students.id==student_id).first()
     if not student:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,

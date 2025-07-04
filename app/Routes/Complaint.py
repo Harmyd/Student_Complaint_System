@@ -15,9 +15,10 @@ def submit_complaints(
     Complaint_Title:str = Form(...),
     Description:str= Form(...),
     File_path: Optional[List[UploadFile]]=File(default=None),
-    db:Session=Depends(get_db)
+    db:Session=Depends(get_db),
+    current_user=Depends(get_token)
 ):
-    return submit_complaint.submit_Complaints (Name,Matric_no,Department,Level,Complaint_Title,Description,File_path,db)
+    return submit_complaint.submit_Complaints(Name,Matric_no,Department,Level,Complaint_Title,Description,File_path,db,current_user)
 
 
 @complaint.get("/get_complaints",status_code=status.HTTP_200_OK)
