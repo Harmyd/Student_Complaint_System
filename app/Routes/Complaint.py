@@ -14,7 +14,7 @@ def submit_complaints(
     Level:str = Form(...),
     Complaint_Title:str = Form(...),
     Description:str= Form(...),
-    File_path: Optional[List[UploadFile]]=File(...),
+    File_path: Optional[List[UploadFile]]=File(default=None),
     db:Session=Depends(get_db)
 ):
     return submit_complaint.submit_Complaints (Name,Matric_no,Department,Level,Complaint_Title,Description,File_path,db)
