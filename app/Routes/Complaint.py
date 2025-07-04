@@ -1,7 +1,7 @@
 from fastapi import APIRouter,Depends,status,Form,UploadFile,File
 from ..databases import Session,get_db
 from ..Services.Complaint import submit_complaint,Get_complaint
-from typing import List
+from typing import List,Optional
 from ..Util.Oauth import get_token
 
 
@@ -14,7 +14,7 @@ def submit_complaints(
     Level:str = Form(...),
     Complaint_Title:str = Form(...),
     Description:str= Form(...),
-    File_path:List[UploadFile]=File(...),
+    File_path: Optional[List[UploadFile]]=File(...),
     db:Session=Depends(get_db)
 ):
     return submit_complaint.submit_Complaints (Name,Matric_no,Department,Level,Complaint_Title,Description,File_path,db)
