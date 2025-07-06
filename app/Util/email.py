@@ -1,4 +1,5 @@
 from email.message import EmailMessage
+from email.utils import formataddr
 import smtplib
 from fastapi import status
 from fastapi.responses import JSONResponse
@@ -8,7 +9,7 @@ def send_email(code,receiver_email):
     my_app_password="ughtbouqgtkdhpzl"
 
     msg= EmailMessage()
-    msg["From"]=my_email
+    msg["From"]=formataddr(("Univoice",my_email)) 
     msg["To"]=receiver_email
     msg["Subject"]="Password_Reset"
     msg.set_content(f"Here is your reset code {code},This code will expire in 1 minute")
