@@ -22,5 +22,5 @@ def submit_complaints(
 
 
 @complaint.get("/get_complaints",status_code=status.HTTP_200_OK)
-def get_complaint(db,current_user=Depends(get_token)):
+def get_complaint(db:Session=Depends(get_db),current_user=Depends(get_token)):
     return Get_complaint.get_user_complaint(db,current_user)
