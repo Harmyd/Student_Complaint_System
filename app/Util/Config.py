@@ -5,6 +5,7 @@ import os
 #Algorithm="HS256"
 SECRET_KEY=os.getenv("SECRET_KEY")
 Algorithm=os.getenv("ALGORITHM")
+Database_url=os.getenv("DATABASE_URL")
 
 cloudinary.config(
     api_key=os.getenv("CLOUDINARY_API_KEY"),
