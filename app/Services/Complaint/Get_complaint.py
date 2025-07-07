@@ -22,10 +22,10 @@ def get_user_complaint(db:Session,current_user):
         )
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        content={
+        content=jsonable_encoder({
                  "message":"Successfull",
                  "Complaints":[ComplaintOut.from_orm(c).dict() for c in complaint]
-                 }
+                 })
     )
   
 
