@@ -2,6 +2,7 @@ from fastapi import APIRouter,Depends,status,Form,UploadFile,File
 from ..databases import Session,get_db
 from ..Services.Complaint import submit_complaint,Get_complaint
 from typing import List,Optional
+from ..schema import ComplaintOut
 from ..Util.Oauth import get_token
 
 

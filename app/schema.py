@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import List,Optional
+from datetime import datetime
 
 class UserSignUp(BaseModel):
     Fullname:str
@@ -22,6 +23,21 @@ class VerifyCodeRequest(BaseModel):
 
 class ResetPassword(Login):
     pass
+
+class ComplaintOut(BaseModel):
+    id:int
+    name:str
+    title:str
+    matric_no:str
+    level:str
+    description:str
+    department:str
+    file_path:List[str]
+    status:str
+    created_at:datetime
+
+    class Config:
+        orm_mode=True
 
 
 

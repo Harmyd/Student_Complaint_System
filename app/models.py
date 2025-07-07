@@ -1,6 +1,7 @@
 from .databases import Base
 from sqlalchemy import ForeignKey,Column,Integer,String,DateTime
 from sqlalchemy.orm import Relationship
+from sqlalchemy.dialects.postgresql import ARRAY
 from datetime import datetime
 
 class Students(Base):
@@ -20,11 +21,12 @@ class Complains(Base):
     id = Column(Integer,primary_key=True,index=True)
     name= Column(String)
     title = Column(String)
+    matric_no=Column(String)
     student_id=Column(ForeignKey("students.id"))
     level=Column(String)
     description=Column(String,nullable=False)
     department=Column(String)
-    file_path=Column(String,nullable=True)
+    file_path=Column(ARRAY(String,nullable=True))
     status= Column(String,default="Pending")
     created_at=Column(DateTime,default=datetime.utcnow)
 

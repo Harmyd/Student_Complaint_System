@@ -16,6 +16,7 @@ def submit_Complaints(Name,Matric_no,Department,Level,Complaint_title,Descriptio
         )
     try:
         url=None
+        urls=[]
         if File_path:
             for File in File_path:
                 result=cloudinary.uploader.upload(
@@ -24,8 +25,9 @@ def submit_Complaints(Name,Matric_no,Department,Level,Complaint_title,Descriptio
                     resource_type="auto"
                 )
                 url = result["secure_url"]
+                urls.append(url)
         
-        complaint= Complains(name=Name,title=Complaint_title,student_id=student.id,level=Level,description=Description,department=Department,file_path=url)
+        complaint= Complains(name=Name,title=Complaint_title,matric_no=Matric_no,student_id=student.id,level=Level,description=Description,department=Department,file_path=urls)
         db.add(complaint)
         db.commit()
         db.refresh(complaint)

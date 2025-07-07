@@ -2,6 +2,7 @@ from ...databases import Session
 from ...models import Complains,Students
 from fastapi.responses import JSONResponse
 from fastapi import status
+from ...schema  import ComplaintOut
 from fastapi.encoders import jsonable_encoder
 
 def get_user_complaint(db:Session,current_user):
@@ -21,8 +22,10 @@ def get_user_complaint(db:Session,current_user):
         )
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        content={"message":"Successfull",
-                 "Complaints":jsonable_encoder(complaint)}
+        content={
+                 "message":"Successfull",
+                 "Complaints":[ComplaintOut.from_orm(c).dict for c in complaint]
+                 }
     )
   
 
