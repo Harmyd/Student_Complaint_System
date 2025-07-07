@@ -32,7 +32,7 @@ class ComplaintOut(BaseModel):
     level:str
     description:str
     department:str
-    file_path:List[str]
+    file_path:Optional[List[str]]=None
     status:str
     created_at:datetime
 
