@@ -24,7 +24,7 @@ def get_user_complaint(db:Session,current_user):
         status_code=status.HTTP_200_OK,
         content={
                  "message":"Successfull",
-                 "Complaints":[ComplaintOut.from_orm(c).dict for c in complaint]
+                 "Complaints":[ComplaintOut.from_orm(c).dict() for c in complaint]
                  }
     )
   
