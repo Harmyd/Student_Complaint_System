@@ -26,7 +26,7 @@ class Complains(Base):
     level=Column(String)
     description=Column(String,nullable=False)
     department=Column(String)
-    file_path=Column(ARRAY(String,nullable=True))
+    file_path=Column(ARRAY(String),nullable=True)
     status= Column(String,default="Pending")
     created_at=Column(DateTime,default=datetime.utcnow)
 
