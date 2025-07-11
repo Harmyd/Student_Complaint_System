@@ -16,10 +16,8 @@ def change_password(request,db:Session):
                 status_code=status.HTTP_404_NOT_FOUND,
                 content={"message":"User not found"}
             )
-        user.Password=new_password
-        db.add(user)
+        user.Password=validator.valid_password(new_password) 
         db.commit()
-        db.refresh(user)
         return JSONResponse(
             status_code=status.HTTP_202_ACCEPTED,
             content={"message":"password reset successfull"}
