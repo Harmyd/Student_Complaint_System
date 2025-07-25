@@ -5,7 +5,7 @@ from ..Services import send_reset_code,verify_reset_code,Reset_password
 
 forgot_password=APIRouter(
     prefix="/forgot_password",
-    tags="Password_Reset"
+    tags=["Password_Reset"]
 )
 
 @forgot_password.post("/send_reset_code",status_code=status.HTTP_200_OK)

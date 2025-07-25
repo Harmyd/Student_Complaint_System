@@ -3,7 +3,7 @@ from fastapi import Depends,APIRouter,status
 from ..schema import UserSignUp,Login
 from ..Services import signup,login
 
-Auth= APIRouter(prefix="/auth",tags="auth")
+Auth= APIRouter(prefix="/auth",tags=["auth"])
 
 @Auth.post("/signup",status_code=status.HTTP_201_CREATED)
 def Signup(request:UserSignUp,db:Session=Depends(get_db)):

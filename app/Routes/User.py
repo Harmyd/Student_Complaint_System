@@ -6,7 +6,7 @@ from ..Services.User import upload_profile_image
 
 User=APIRouter(
                prefix="/users",
-               tags="Users"
+               tags=["Users"]
                )
 @User.post("/upload_profile_pic",status_code=status.HTTP_200_OK)
 def Upload_picture(
