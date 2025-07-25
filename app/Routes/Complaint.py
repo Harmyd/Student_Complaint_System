@@ -6,7 +6,7 @@ from ..schema import ComplaintOut
 from ..Util.Oauth import get_token
 
 
-complaint=APIRouter(prefix="/complaint")
+complaint=APIRouter(prefix="/complaint",tags="Complaint")
 @complaint.post("/submit_complaint",status_code=status.HTTP_201_CREATED)
 def submit_complaints(
     Name:str = Form(...),

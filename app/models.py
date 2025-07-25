@@ -13,6 +13,7 @@ class Students(Base):
     Level=Column(String,index=True)
     Email=Column(String,unique=True,index=True)
     Password = Column(String)
+    profile_image=Column(String,nullable=True)
     
     complains=Relationship("Complains",back_populates="student")
 
