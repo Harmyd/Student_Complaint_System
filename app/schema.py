@@ -10,6 +10,16 @@ class UserSignUp(BaseModel):
     Email:str
     Password:str
 
+class UserOut(BaseModel):
+    Fullname:str
+    Matric_no:str
+    Department:str
+    Level:str
+    Email:str
+
+    class Config:
+        from_attributes=True
+
 class Login(BaseModel):
     Email:str
     Password:str
