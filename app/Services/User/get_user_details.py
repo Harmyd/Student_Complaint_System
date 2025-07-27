@@ -15,12 +15,12 @@ def get_user_detail(db:Session,user):
         )
     try:
         User=db.query(Students).filter(Students.id==userId).first()
-        if not user:
+        if not User:
             return JSONResponse(
                 status_code=status.HTTP_404_NOT_FOUND,
                 content={"message":"User does not exist"}
             )
-        user_data=UserOut.from_orm(user)
+        user_data=UserOut.from_orm(User)
         return JSONResponse(
             status_code=status.HTTP_200_OK,
             content={
