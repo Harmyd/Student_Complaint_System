@@ -13,10 +13,11 @@ def upload_profile_image(Picture:UploadFile,db:Session,user):
             content={"message":"Not authorised"}
         )
     try:
+        Picture.file.seek(0)
         result=cloudinary.uploader.upload(
             Picture.file,
             folder="User_img",
-            resource_type="images"
+            resource_type="image"
         )
         url=result["secure_url"]
         #save in db
