@@ -16,7 +16,7 @@ class UserOut(BaseModel):
     Department:str
     Level:str
     Email:str
-    profile_image:str
+    profile_image:Optional[str]=None
 
     class Config:
         from_attributes=True
