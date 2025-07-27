@@ -11,11 +11,12 @@ class UserSignUp(BaseModel):
     Password:str
 
 class UserOut(BaseModel):
-    Fullname:str
-    Matric_no:str
+    Full_name:str
+    Matric_No:str
     Department:str
     Level:str
     Email:str
+    profile_image:str
 
     class Config:
         from_attributes=True
