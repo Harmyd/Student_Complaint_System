@@ -5,14 +5,14 @@ from fastapi.responses import JSONResponse
 from ..models import Students
 from ..Util.hash import Hash
 
-def login(request,db:Session):
+async def login(request,db:Session):
 
     Email_valid=validator.valid_email(request.Email.strip().lower())
     if isinstance(Email_valid,JSONResponse):
         return Email_valid
     email=Email_valid
     
-    Email_check=db.query(Students).filter(Students.Email==email).first()
+    Email_check=await db.query(Students).filter(Students.Email==email).first()
     
     
     if not Email_check:

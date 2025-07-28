@@ -6,7 +6,7 @@ from ...models import Students
 from ...schema import UserOut
 
 
-def get_user_detail(db:Session,user):
+async def get_user_detail(db:Session,user):
     userId=user["user_id"]
     if not userId:
         return JSONResponse(
@@ -14,7 +14,7 @@ def get_user_detail(db:Session,user):
             content={"messsage":"Not authorised"}
         )
     try:
-        User=db.query(Students).filter(Students.id==userId).first()
+        User=await db.query(Students).filter(Students.id==userId).first()
         if not User:
             return JSONResponse(
                 status_code=status.HTTP_404_NOT_FOUND,

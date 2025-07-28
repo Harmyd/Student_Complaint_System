@@ -5,7 +5,7 @@ from fastapi import status,HTTPException
 from ..Util import validator,Token,hash
 
 
-def SignUp(request,db:Session):
+async def SignUp(request,db:Session):
     Email_valid=validator.valid_email(request.Email.strip().lower())
     Matric_number=request.Matric_no.strip().lower()
 
@@ -22,8 +22,8 @@ def SignUp(request,db:Session):
     password=password_strength
     
     #check if email and matric no already exist
-    Email_check=db.query(Students).filter(Students.Email==Email_valid).first()
-    Matric_no_check=db.query(Students).filter(Students.Matric_No==Matric_number).first()
+    Email_check=await db.query(Students).filter(Students.Email==Email_valid).first()
+    Matric_no_check=await db.query(Students).filter(Students.Matric_No==Matric_number).first()
     if Email_check :
         return JSONResponse(
            

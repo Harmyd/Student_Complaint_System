@@ -20,6 +20,8 @@ class UserOut(BaseModel):
 
     class Config:
         from_attributes=True
+    
+
 
 class Login(BaseModel):
     Email:str
