@@ -2,7 +2,7 @@ from fastapi import Depends,status,APIRouter,UploadFile,File,Form
 from ..databases import Session,get_db
 from ..Util.Oauth import get_token
 from ..Services.User import upload_profile_image,get_user_details,edit_user
-from ..schema import UserOut,EditUser
+from ..schema import UserOut
 from typing import Optional
 
 
