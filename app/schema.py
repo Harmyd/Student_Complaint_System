@@ -10,6 +10,8 @@ class UserSignUp(BaseModel):
     Email:str
     Password:str
 
+
+
 class UserOut(BaseModel):
     Full_name:str
     Matric_No:str
@@ -21,7 +23,8 @@ class UserOut(BaseModel):
     class Config:
         from_attributes=True
     
-
+class Edit_user(UserOut):
+    pass
 
 class Login(BaseModel):
     Email:str

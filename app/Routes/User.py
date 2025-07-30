@@ -26,13 +26,8 @@ async def user_info(db:Session=Depends(get_db),user=Depends(get_token)):
 
 @USER.post("/edit_user_detail",status_code=status.HTTP_200_OK)
 async def edit_user_detail(
-    Full_name:Optional[str]=Form(None),
-    Matric_No:Optional[str]=Form(None),
-    Department:Optional[str]=Form(None),
-    Level:Optional[str]=Form(None),
-    Email:Optional[str]=Form(None),
-    profile_image:Optional[UploadFile]=File(default=None),
+    request:UserOut,
     db:Session=Depends(get_db),
     user=Depends(get_token)
 ):
-    return await edit_user(Full_name,Matric_No,Department,Level,Email,profile_image,db,user)
+    return await edit_user(request,db,user)
