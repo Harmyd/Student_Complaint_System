@@ -1,7 +1,8 @@
 from fastapi import Depends,status,APIRouter,UploadFile,File,Form
 from ..databases import Session,get_db
 from ..Util.Oauth import get_token
-from ..Services.User import upload_profile_image,get_user_details,edit_user
+from ..Services.User import upload_profile_image,get_user_details
+from ..Services.User.edit_user import edit_user
 from ..schema import UserOut
 from typing import Optional
 
@@ -23,7 +24,7 @@ def user_info(db:Session=Depends(get_db),user=Depends(get_token)):
     return get_user_details.get_user_detail(db,user)
 
 @USER.post("/edit_user_detail",status_code=status.HTTP_200_OK)
-def edit_user_detail(
+async def edit_user_detail(
     Full_name:Optional[str]=Form(None),
     Matric_No:Optional[str]=Form(None),
     Department:Optional[str]=Form(None),
@@ -33,4 +34,4 @@ def edit_user_detail(
     db:Session=Depends(get_db),
     user=Depends(get_token)
 ):
-    return edit_user.edit_user(Full_name,Matric_No,Department,Level,Email,profile_image,db,user)
+    return await edit_user(Full_name,Matric_No,Department,Level,Email,profile_image,db,user)
