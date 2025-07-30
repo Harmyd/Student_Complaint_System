@@ -38,16 +38,16 @@ async def edit_user(Full_name,Matric_No,Department,Level,Email,profile_image:Upl
                 content={"message":str(e)}
             )
     #fetching the students result from the database 
-    user= db.query(Students).filter(Students.id==userId).first()
-    if not user:
+    user_record= db.query(Students).filter(Students.id==userId).first()
+    if not user_record:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"message":"User not found"}
         )
     for field,value in updated_data.items():    
-        setattr(user,field,value)
+        setattr(user_record,field,value)
     db.commit()
-    db.refresh(user)
+    db.refresh(user_record)
     return JSONResponse(
         status_code=status.HTTP_200_OK,
         content={
