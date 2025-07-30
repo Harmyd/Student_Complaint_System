@@ -4,7 +4,7 @@ from ..Util.Oauth import get_token
 from ..Services.User import upload_profile_image,get_user_details
 from ..Services.User.edit_user import edit_user
 from ..Services.User.get_user_details import get_user_detail
-from ..schema import UserOut
+from ..schema import UserOut,Edit_user
 from typing import Optional
 
 
@@ -26,7 +26,7 @@ async def user_info(db:Session=Depends(get_db),user=Depends(get_token)):
 
 @USER.post("/edit_user_detail",status_code=status.HTTP_200_OK)
 async def edit_user_detail(
-    request:UserOut,
+    request:Edit_user,
     db:Session=Depends(get_db),
     user=Depends(get_token)
 ):

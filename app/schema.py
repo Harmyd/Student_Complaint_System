@@ -23,8 +23,13 @@ class UserOut(BaseModel):
     class Config:
         from_attributes=True
     
-class Edit_user(UserOut):
-    pass
+class Edit_user(BaseModel):
+    Full_name:Optional[str]=None
+    Matric_No:Optional[str]=None
+    Department:Optional[str]=None
+    Level:Optional[str]=None
+    Email:Optional[str]=None
+   
 
 class Login(BaseModel):
     Email:str
