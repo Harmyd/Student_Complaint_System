@@ -38,7 +38,7 @@ async def edit_user(Full_name,Matric_No,Department,Level,Email,profile_image:Upl
                 content={"message":str(e)}
             )
     #fetching the students result from the database 
-    user= await db.query(Students).filter(Students.id==userId).first()
+    user= db.query(Students).filter(Students.id==userId).first()
     if not user:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
