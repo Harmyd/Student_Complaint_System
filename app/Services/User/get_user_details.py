@@ -14,7 +14,7 @@ async def get_user_detail(db:Session,user):
             content={"messsage":"Not authorised"}
         )
     try:
-        User=await db.query(Students).filter(Students.id==userId).first()
+        User= db.query(Students).filter(Students.id==userId).first()
         if not User:
             return JSONResponse(
                 status_code=status.HTTP_404_NOT_FOUND,

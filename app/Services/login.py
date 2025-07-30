@@ -12,7 +12,7 @@ async def login(request,db:Session):
         return Email_valid
     email=Email_valid
     
-    Email_check=await db.query(Students).filter(Students.Email==email).first()
+    Email_check= db.query(Students).filter(Students.Email==email).first()
     
     
     if not Email_check:

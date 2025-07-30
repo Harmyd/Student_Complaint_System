@@ -22,8 +22,8 @@ async def SignUp(request,db:Session):
     password=password_strength
     
     #check if email and matric no already exist
-    Email_check=await db.query(Students).filter(Students.Email==Email_valid).first()
-    Matric_no_check=await db.query(Students).filter(Students.Matric_No==Matric_number).first()
+    Email_check= db.query(Students).filter(Students.Email==Email_valid).first()
+    Matric_no_check= db.query(Students).filter(Students.Matric_No==Matric_number).first()
     if Email_check :
         return JSONResponse(
            
